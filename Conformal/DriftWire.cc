@@ -2,14 +2,23 @@
 
 #include <iostream>
 
-DriftWire::DriftWire(Vector3 center, Vector3 lineVec, double length){
+DriftWire::DriftWire(Vector3 center, Vector3 linexVec,Vector3 lineyVec,Vector3 lineVec, double length)
+{
   m_center = center;
+  m_linexVec = linexVec;
+  m_lineyVec = lineyVec;
   m_lineVec = lineVec;
   m_halfLength = length;
 }
 
 Vector3 DriftWire::getCenter() const {
   return m_center;
+}
+Vector3 DriftWire::getLinexVec() const {
+  return m_linexVec;
+}
+Vector3 DriftWire::getLineyVec() const {
+  return m_lineyVec;
 }
 
 Vector3 DriftWire::getLineVec() const {

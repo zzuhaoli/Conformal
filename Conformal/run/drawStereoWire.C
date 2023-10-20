@@ -1,6 +1,6 @@
-#include <circle.hh>
-#include <Algebra.hh>
-#include <DriftChamber.hh>
+#include "../f.hh"
+#include "../Algebra.hh"
+#include "../DriftChamber.hh"
 
 #include <TCanvas.h>
 #include <TGraph.h>
@@ -18,7 +18,7 @@
 void drawStereoWire(){
 
 
-  DriftChamber driftChamber("/home/xiaocong/Software/Oscar/acts/build/bin/STCF_tracker.root", "MultiLayerDriftChamber02_Gas_2");
+  DriftChamber driftChamber("/mnt/c/Users/lhaza/Desktop/Conformal/run/STCF_tracker.root", "MultiLayerDriftChamber02_Gas_2");
 
   int layer=29;
   int nCells = 6000;
@@ -33,7 +33,7 @@ void drawStereoWire(){
   h1->GetYaxis()->SetRangeUser(-1000, 1000); 
 
   //for(int i=5504; i<5759; i=i+20){
-  for(int i=5504; i<5759; i=i+10){
+  for(int i=5504; i<5759; i=i+20){
     auto wire = driftChamber.getSignalWire(layer, i);
     if(wire.has_value()){ 
     auto ends = wire->getEnds();

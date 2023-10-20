@@ -1,8 +1,8 @@
-#include <Algebra.hh>
-#include <DriftChamber.hh>
-#include <circle.hh>
-#include <setStyle.hh>
-
+#include "../Algebra.hh"
+#include "../DriftChamber.hh"
+#include "../f.hh"
+#include "setStyle.hh"
+#include <Eigen/Geometry>
 #include <TCanvas.h>
 #include <TFile.h>
 #include <TGraph.h>
@@ -60,8 +60,7 @@ void drawImpact() {
   double yTitleOffset = 1.6;
 
   TFile *file =
-      TFile::Open("/home/xiaocong/Software/Oscar/offline/Examples/"
-                  "JobSubmission/3RPC7PS/fullsim_lambdalambdabar.root",
+      TFile::Open("/mnt/c/Users/lhaza/Desktop/Conformal/run/fullsim_lambdalambdabar.root",
                   "READ");
   // TFile* file =
   // TFile::Open("/home/xiaocong/Software/Oscar/offline/Examples/JobSubmission/3RPC7PS/fullsim_pipijpsi.root","READ");
@@ -115,13 +114,14 @@ void drawImpact() {
   // Get a particle that has vxy> 150 mm
   int ientry = 0;
 
+  std::cout<<"Before creating driftChamber" << std::endl;
   // The map of particle index to particle circle
   std::map<int, Circle> particleCircles;
   // The map of particle index to drift circles
   std::map<int, std::vector<Circle>> driftCircles;
 
   DriftChamber driftChamber(
-      "/home/xiaocong/Software/Oscar/acts/build/bin/STCF_tracker.root",
+      "/mnt/c/Users/lhaza/Desktop/Conformal/run/STCF_tracker.root",
       "MultiLayerDriftChamber02_Gas_2");
 
   TH1F *hd0_pi = new TH1F("hd0_pi", "", 100, 0, 200);

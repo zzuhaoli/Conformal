@@ -1,7 +1,7 @@
-#include <Algebra.hh>
-#include <DriftChamber.hh>
-#include <circle.hh>
-
+#include "../Algebra.hh"
+#include "../DriftChamber.hh"
+#include "../f.hh"
+#include <Eigen/Geometry>
 #include <TCanvas.h>
 #include <TFile.h>
 #include <TGraph.h>
@@ -42,8 +42,7 @@ Circle getCircleInGeometrySpace(double zField, Vector3 vertex,
 void drawDisplacedTrack() {
 
   TFile *file =
-      TFile::Open("/home/xiaocong/Software/Oscar/offline/Examples/"
-                  "JobSubmission/3RPC7PS/fullsim_lambdalambdabar.root",
+      TFile::Open("/mnt/c/Users/lhaza/Desktop/Conformal/run/fullsim_lambdalambdabar.root",
                   "READ");
   // TFile* file =
   // TFile::Open("/home/xiaocong/Software/Oscar/offline/Examples/JobSubmission/3RPC7PS/fullsim_pipijpsi.root","READ");
@@ -104,7 +103,7 @@ void drawDisplacedTrack() {
   std::map<int, std::vector<Circle>> driftCircles;
 
   DriftChamber driftChamber(
-      "/home/xiaocong/Software/Oscar/acts/build/bin/STCF_tracker.root",
+      "/mnt/c/Users/lhaza/Desktop/Conformal/run/STCF_tracker.root",
       "MultiLayerDriftChamber02_Gas_2");
 
   while (treeReader->Next()) {
